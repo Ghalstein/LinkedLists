@@ -1,5 +1,5 @@
 // singly liked list
-public class ListNode<T> {
+public class ListNode<T extends Comparable<T>> {
 	public T data;
 	public ListNode<T> next;
 
@@ -31,6 +31,16 @@ public class ListNode<T> {
 		str += "]";
 
 		return str;
+	}
+
+	// //  compares the data of the list to another
+	public boolean comapreTo(ListNode<T> list) {
+		if (this.data.compareTo(list.data) > 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	public static void main(String[] args) {
