@@ -14,7 +14,7 @@ public class ListNode<T> {
 	// deletes the node proceding the specified node
 	public static void delete(ListNode<Integer> node) {
 		if (node.next != null) {
-			node.next = node.next.next
+			node.next = node.next.next;
 		}
 	}
 }
