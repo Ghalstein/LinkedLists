@@ -17,4 +17,20 @@ public class ListNode<T> {
 			node.next = node.next.next;
 		}
 	}
+
+	public String toString(ListNode list) {
+		String str = "[";
+		
+		// adding current data in the ListNode
+		str += list.data;
+		ListNode curr = list.next;
+		// iteration of listNode
+		while (curr != null) {
+			str += curr.data + " "
+			curr = curr.next;
+		}
+		str += "]";
+
+		return str;
+	}
 }
