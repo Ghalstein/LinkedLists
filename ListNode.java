@@ -1,5 +1,5 @@
 // singly liked list
-public class ListNode<T> {
+public class ListNode<T extends Comparable<T>> {
 	public T data;
 	public ListNode<T> next;
 
@@ -14,7 +14,42 @@ public class ListNode<T> {
 	// deletes the node proceding the specified node
 	public static void delete(ListNode<Integer> node) {
 		if (node.next != null) {
-			node.next = node.next.next
+			node.next = node.next.next;
 		}
+	}
+
+	public String toString() {
+		String str = "[";
+		// adding current data in the ListNode
+		str += this.data;
+		ListNode<T> curr = this.next;
+		// iteration of listNode
+		while (curr != null) {
+			str += " " + curr.data;
+			curr = curr.next;
+		}
+		str += "]";
+
+		return str;
+	}
+
+	// //  compares the data of the list to another
+	public boolean comapreTo(ListNode<T> list) {
+		if (this.data.compareTo(list.data) > 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public static void main(String[] args) {
+
+		//unit testing list node
+		ListNode<Integer> list = new ListNode<>();
+		list.data = 1;
+		list.next = new ListNode<>();
+		list.next.data = 2;
+		System.out.println(list.toString());
 	}
 }
