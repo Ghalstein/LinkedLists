@@ -21,20 +21,6 @@ public class MergeSortedLinkedLists {
 		return list;
 	}
 
-	// helper function for adding the contents of a ListNode to another ListNode
-	private static void addTheRest(ListNode<Integer> adder, ListNode<Integer> addee) {
-		if (adder != null) {
-			addee.data = adder.data;
-			adder = adder.next;
-			while (adder != null) {
-				addee.next = new ListNode<>();
-				addee = addee.next;
-				addee.data = adder.data;
-				adder = adder.next;
-			}
-		}
-	}
-
 	public static ListNode<Integer> mergeSortedLists(ListNode<Integer> list1, ListNode<Integer> list2) {
 		// pointers for the two lists
 		ListNode<Integer> curr1 = list1;

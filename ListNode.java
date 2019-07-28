@@ -43,6 +43,20 @@ public class ListNode<T extends Comparable<T>> {
 		}
 	}
 
+	// randomly generate listnode with a specific length
+	public static ListNode<Integer> randGen(int n) {
+		ListNode<Integer> list = new ListNode<>();
+		list.data = (int)(Math.random() * 10);
+		ListNode<Integer> curr = list;
+		
+		for (int i = 0; i < n; ++i) {
+			curr.next = new ListNode<>();
+			curr = curr.next;
+			curr.data = (int)(Math.random() * 10);
+		}
+		return list;
+	}
+
 	public static void main(String[] args) {
 
 		//unit testing list node
