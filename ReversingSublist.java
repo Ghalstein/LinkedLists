@@ -6,11 +6,6 @@ public class ReversingSublist {
 		ListNode<Integer> prev = beforeStart.next;
 		ListNode<Integer> curr = prev.next;
 		ListNode<Integer> forward = curr.next;
-
-		System.out.println(beforeStart);
-		System.out.println(curr);
-		System.out.println(prev);
-		System.out.println(forward);
 		
 		//iterating through the sublist
 		for (int i = 0; i < interval; ++i) {
@@ -33,9 +28,9 @@ public class ReversingSublist {
 		reverseSublist(ListNode.find(list, start - 1), (stop - start));
 	}
 	public static void main(String[] args) {
-		ListNode<Integer> list = ListNode.randGen(5);
+		ListNode<Integer> list = ListNode.randGen(10);
 		System.out.println("Start: " + list);
-		reverse(list, 2, 4);
+		reverse(list, Integer.parseInt(args[0]), Integer.parseInt(args[1]));
 		System.out.println("Last: " + list);
 	}
 }
