@@ -11,6 +11,15 @@ public class ListNode<T extends Comparable<T>> {
 		return L;
 	}
 
+	public static ListNode<Integer> find(ListNode<Integer> L, int node){ 
+		int count = 0;
+		while (L != null && count++ != node) {
+			L = L.next;
+		}
+		// If key was not present in the list, L will have become null.
+		return L;
+	}
+
 	// deletes the node proceding the specified node
 	public static void delete(ListNode<Integer> node) {
 		if (node.next != null) {
