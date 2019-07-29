@@ -1,7 +1,7 @@
 public class Cyclicity {
 
 	public static boolean isCyclic(ListNode<Integer> list) {
-		ListNode<Integer> fast = list.next.next;
+		ListNode<Integer> fast = list;
 		ListNode<Integer> slow = list;
 
 		// iterates through list
