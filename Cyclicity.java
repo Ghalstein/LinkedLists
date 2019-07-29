@@ -1,22 +1,17 @@
 public class Cyclicity {
 
 	public static boolean isCyclic(ListNode<Integer> list) {
-		ListNode<Integer> fast = list.next;
+		ListNode<Integer> fast = list.next.next;
 		ListNode<Integer> slow = list;
 
 		// iterates through list
-		while (fast != null) {
+		while (fast != null && fast.next != null) {
 			// if they are equal then it is cyclic 
+			slow = slow.next;
+			fast = fast.next.next;
+
 			if (fast == slow) {
 				return true;
-			}
-			// if fast.next is not null then we can incrmeent it two
-			else if (fast.next != null){
-				fast = fast.next.next;
-				slow = slow.next;
-			}
-			else {
-				return false;
 			}
 		}
 		return false;
@@ -31,7 +26,8 @@ public class Cyclicity {
 		System.out.println();
 		ListNode<Integer> cyclic = new ListNode<Integer>();
 		cyclic.next = new ListNode<Integer>();
-		cyclic = cyclic.next.next;
+		cyclic.next.next = new ListNode<Integer>();
+		cyclic.next.next.next = cyclic;
 		System.out.println("Cyclic: " + cyclic);
 		System.out.println("Tests " + isCyclic(cyclic));
 	}
