@@ -13,6 +13,9 @@ public class ListNode<T extends Comparable<T>> {
 
 	public static ListNode<Integer> find(ListNode<Integer> L, int node){ 
 		int count = 0;
+		if (node < 0) {
+			return L;
+		}
 		while (L != null && count++ != node) {
 			L = L.next;
 		}
