@@ -24,6 +24,8 @@ public class Overlap {
 
 
 	public static void main(String[] args) {
-		
+		ListNode<Integer> l1 = ListNode.randGen(5);
+		ListNode<Integer> l2 = ListNode.randGen(10);
+		System.out.println(isOverlap(l1, l2));
 	}
 }
