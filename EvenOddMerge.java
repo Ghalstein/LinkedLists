@@ -23,6 +23,7 @@ public class EvenOddMerge {
 	public static void main(String[] args) {
 		ListNode <Integer> list = ListNode.randGen(10);
 		System.out.println("Before: " + list);
-		System.out.println("After: " + merge(list));
+		merge(list);
+		System.out.println("After: " + list);
 	}
 }
