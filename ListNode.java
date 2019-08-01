@@ -80,6 +80,7 @@ public class ListNode<T extends Comparable<T>> {
 		int insertData = insertNode.data;
 		insertNode.data = node.data;
 		node.data = insertData;
+		node = insertNode;
 	}
 
 
