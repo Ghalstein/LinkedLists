@@ -74,6 +74,21 @@ public class ListNode<T extends Comparable<T>> {
 		node.next = insertNode;
 	}
 
+	public static void insertBefore(ListNode<Integer> node, ListNode<Integer> insertNode) {
+		insertNode.next = node.next;
+		node.next = insertNode;
+		int insertData = insertNode.data;
+		insertNode.data = node.data;
+		node.data = insertData;
+		node = insertNode;
+	}
+
+	public static void insertFirst(ListNode<Integer> list, ListNode<Integer> node) {
+		node.next = list;
+	}
+
+
+
 	public static void main(String[] args) {
 
 		//unit testing list node
