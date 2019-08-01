@@ -69,6 +69,11 @@ public class ListNode<T extends Comparable<T>> {
 		return list;
 	}
 
+	public static void insertAfter(ListNode<Integer> node, ListNode<Integer> insertNode) {
+		insertNode.next = node.next;
+		node.next = insertNode;
+	}
+
 	public static void main(String[] args) {
 
 		//unit testing list node
