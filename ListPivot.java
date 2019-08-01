@@ -1,23 +1,32 @@
 public class ListPivot {
 
 	public static void pivot(ListNode<Integer> list, int n) {
-		ListNode<Integer> curr = list;
-		ListNode<Integer> pivot = ListNode.find(list, n);
-		ListNode<Integer> newList = new ListNode<>();\
-		newList.data = pivot.data;
+		ListNode<Integer> pivot = find(list, n);
+		ListNode<Integer> newPivot = new ListNode<>();
+		newPivot.data = pivot.data;
+		ListNode<Integer> back = new ListNode<>();
+		ListNode<Integer> front = new ListNode<>();
+		ListNode<Integer> frontTail = new ListNode<>();
 
-		while (curr.next != null) {
-			ListNode<Integer> prev = curr;
-			curr = curr.next;
-			if (curr.data < pivot.data) {
-				ListNode.insertBefore(pivot, prev);
+		while (curr != null) {
+			if (curr.data <= pivot.data && curr != pivot) {
+				ListNode<Integer> target = curr;
+				curr = curr.next;
+				front.next = target;
+
 			}
 			else if (curr.data > pivot.data) {
-				ListNode.insertAfter(pivot, prev);
-			}
+				ListNode<Integer> target = curr;
+				curr = curr.next;
+				back.next = target;
+				frontTail = target;
 		}
-	}
 
+		frontTail.next = newPivot;
+		pivot.next = back.next;
+		back.next = null;
+	}
+	
 	public static void main(String[] args) {
 		// unit testing inserting after a node
 		ListNode<Integer> node = new ListNode<>();
