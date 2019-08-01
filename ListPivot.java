@@ -1,8 +1,10 @@
 public class ListPivot {
 
-	public static void pivot(ListNode<Integer> list, int n) {
-		ListNode<Integer> pivot = find(list, n);
+	public static ListNode<Integer> pivot(ListNode<Integer> list, int n) {
+		ListNode<Integer> pivot = ListNode.find(list, n);
+		System.out.println("Pivot: " + pivot.data);
 		ListNode<Integer> newPivot = new ListNode<>();
+		ListNode<Integer> curr = list;
 		newPivot.data = pivot.data;
 		ListNode<Integer> back = new ListNode<>();
 		ListNode<Integer> front = new ListNode<>();
@@ -20,11 +22,13 @@ public class ListPivot {
 				curr = curr.next;
 				back.next = target;
 				frontTail = target;
+			}
 		}
 
 		frontTail.next = newPivot;
 		pivot.next = back.next;
 		back.next = null;
+		return front;
 	}
 	
 	public static void main(String[] args) {
@@ -37,8 +41,8 @@ public class ListPivot {
 
 		ListNode<Integer> testList = ListNode.randGen(10);
 		System.out.println("Before" + testList);
-		pivot(testList, 4);
-		System.out.println("After" + testList);
+		System.out.println(pivot(testList, 4));
+		// System.out.println("After" + testList);
 
 	}
 }
