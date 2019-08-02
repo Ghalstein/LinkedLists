@@ -12,13 +12,15 @@ public class ListPivot {
 
 		while (curr != null) {
 			if (curr.data <= pivot.data && curr != pivot) {
-				ListNode<Integer> target = curr;
+				ListNode<Integer> target = new ListNode<>();
+				target.data = curr.data;
 				curr = curr.next;
 				front.next = target;
 
 			}
 			else if (curr.data > pivot.data) {
-				ListNode<Integer> target = curr;
+				ListNode<Integer> target = new ListNode<>();
+				target.data = curr.data;
 				curr = curr.next;
 				back.next = target;
 				frontTail = target;
@@ -41,8 +43,8 @@ public class ListPivot {
 
 		ListNode<Integer> testList = ListNode.randGen(10);
 		System.out.println("Before" + testList);
-		System.out.println(pivot(testList, 4));
-		// System.out.println("After" + testList);
+		pivot(testList, 4);
+		System.out.println("After" + testList);
 
 	}
 }
