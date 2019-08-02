@@ -6,29 +6,38 @@ public class ListPivot {
 		ListNode<Integer> newPivot = new ListNode<>();
 		ListNode<Integer> curr = list;
 		newPivot.data = pivot.data;
-		ListNode<Integer> back = new ListNode<>();
-		ListNode<Integer> front = new ListNode<>();
+		ListNode<Integer> frontBack = new ListNode<>();
+		ListNode<Integer> realFront = new ListNode<>();
+		ListNode<Integer> back = frontBack;
+		ListNode<Integer> front = realFront;
 		ListNode<Integer> frontTail = new ListNode<>();
 
 		while (curr != null) {
 			if (curr.data <= pivot.data && curr != pivot) {
-				ListNode<Integer> target = curr;
+				ListNode<Integer> target = new ListNode<>();
+				target.data = curr.data;
 				curr = curr.next;
 				front.next = target;
-
+				front = front.next;
+				frontTail = target;
 			}
 			else if (curr.data > pivot.data) {
-				ListNode<Integer> target = curr;
+				ListNode<Integer> target = new ListNode<>();
+				target.data = curr.data;
 				curr = curr.next;
 				back.next = target;
-				frontTail = target;
+				back = back.next;
+			}
+			else {
+				curr = curr.next;
 			}
 		}
 
 		frontTail.next = newPivot;
-		pivot.next = back.next;
+		newPivot.next = frontBack.next;
 		back.next = null;
-		return front;
+		realFront = realFront.next;
+		return realFront;
 	}
 	
 	public static void main(String[] args) {
@@ -41,8 +50,7 @@ public class ListPivot {
 
 		ListNode<Integer> testList = ListNode.randGen(10);
 		System.out.println("Before" + testList);
-		System.out.println(pivot(testList, 4));
-		// System.out.println("After" + testList);
+		System.out.println("After" + pivot(testList, 4));
 
 	}
 }
