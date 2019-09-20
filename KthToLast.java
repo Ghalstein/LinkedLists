@@ -30,9 +30,25 @@ public class KthToLast {
 		return curr.data;
 	}
 
+	public static int optimalFind(ListNode<Integer> list, int num) {
+		ListNode<Integer> curr = list;
+		ListNode<Integer> prev = list;
+		int count = 0;
+
+		while (curr != null) {
+			++count;
+			curr = curr.next;
+			if (count > num) {
+				prev = prev.next;
+			}
+		}
+		return prev.data;
+	}
+
 	public static void main(String[] args) {
 		ListNode<Integer> list = ListNode.randGen(5);
 		System.out.println("list: " + list);
 		System.out.println("2nd to last: " + find(list, 2));
+		System.out.println("2nd to last using optimal: " + optimalFind(list, 2));
 	}
 }
