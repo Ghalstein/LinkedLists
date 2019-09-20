@@ -61,7 +61,7 @@ public class ListNode<T extends Comparable<T>> {
 		list.data = (int)(Math.random() * 10);
 		ListNode<Integer> curr = list;
 		
-		for (int i = 0; i < n; ++i) {
+		for (int i = 0; i < n - 1; ++i) {
 			curr.next = new ListNode<>();
 			curr = curr.next;
 			curr.data = (int)(Math.random() * 10);
