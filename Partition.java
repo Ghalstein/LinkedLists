@@ -22,31 +22,54 @@ public class Partition {
 		ListNode<Integer> currMiddle = middle;
 		ListNode<Integer> currLeft = left;
 		ListNode<Integer> currRight = right;
+		ListNode<Integer> prevLeft = new ListNode<>();
+		ListNode<Integer> prevRight = new ListNode<>();
+		ListNode<Integer> prevMiddle = new ListNode<>();
 
 
 
 		while (curr != null) {
+			// System.out.println(curr.data);
 			if (curr.data < partition) {
 				currLeft.data = curr.data;
+				prevLeft = currLeft;
+				currLeft.next = new ListNode<>();
 				currLeft = currLeft.next;
 			}
-			else if (curr.data < partition) {
+			else if (curr.data > partition) {
 				currRight.data = curr.data;
+				prevRight = currRight;
+				currRight.next = new ListNode<>();
 				currRight = currRight.next;
 			}
 			else {
 				currMiddle.data = curr.data;
+				prevMiddle = currMiddle;
+				currMiddle.next = new ListNode<>();
 				currMiddle = currMiddle.next;
 			}
+			curr = curr.next;
 		}
 
-		currLeft = middle;
-		currMiddle = right;
-		
-		return currLeft;
+		prevLeft.next = middle;
+		if (right.data != null) {
+			prevMiddle.next = right;
+		}
+		else {
+			prevMiddle.next = null;
+		}
+		prevRight.next = null;
+		if (left.data != null) {
+			return left;
+		}
+		else {
+			return middle;
+		}
 	}
 
 	public static void main(String[] args) {
-
+		ListNode<Integer> list = ListNode.randGen(10);
+		System.out.println(list);
+		System.out.println(run(list, 4));
 	}
 }
