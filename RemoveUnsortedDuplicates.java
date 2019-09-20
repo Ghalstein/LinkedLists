@@ -14,9 +14,12 @@ public class RemoveUnsortedDuplicates {
 		// for the first node in the list
 		hash.add(curr.data);
 		// iterating through the rest of the list
-		while (curr.next != null) {
+		while (curr != null) {
 			if (hash.contains(curr.next.data)) {
 				curr.next = curr.next.next;
+			}
+			else {
+				hash.add(curr.next.data);
 			}
 			curr = curr.next;
 		}
