@@ -1,6 +1,6 @@
 /*
 Attemp to only delete a middle node
-Not meant for first nodes, but will add exception
+Not meant for first nodes, but exception is there so it works
 */
 
 public class DeleteMiddleNode {
@@ -10,11 +10,16 @@ public class DeleteMiddleNode {
 		ListNode<Integer> curr = list.next;
 		ListNode<Integer> prev = list;
 		int count = 2;
+		if (num == 1) {
+			int data = list.data;
+			list = list.next;
+			return data;
+		}
+
 		if (count > num) {
 			return -1;
 		}
 
-		if ()
 		while (curr != null) {
 			if (count == num) {
 				int data = curr.data;
@@ -37,6 +42,8 @@ public class DeleteMiddleNode {
 		System.out.println("before list2: " + list2);
 		System.out.println(delete(list1, 4));
 		System.out.println(delete(list2, 5));
+		System.out.println(delete(list2, 1));
+		System.out.println(delete(list2, 0));
 		System.out.println("after list1: " + list1);
 		System.out.println("after list2: " + list2);
 	}
